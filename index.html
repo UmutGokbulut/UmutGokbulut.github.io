@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+
+function validateForm() {
+  var x = document.querySelector("#name").value;
+  if (x == "") {
+    document.getElementById("error1").innerHTML = "<span style='color: red;'>Name Must Be Filled Out</span>"
+    return false;
+  }
+
+  var e = document.querySelector("#email").value;
+  if ( p == ""){
+    document.getElementById("error2").innerHTML = "<span style='color: red;'>Email must be filled out</span>";
+    return false;
+   }
+
+  if (!/^(?:[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])$/.test(e))
+{
+
+    document.getElementById("error2").innerHTML = "<span style='color: red;'>Please Correct Your Email</span>";
+  return false;
+  }
+  var y = document.querySelector("#sayisal").value;
+   if ( y == ""){
+    document.getElementById("error3").innerHTML = "<span style='color: red;'>Sayısal Must Be Filled Out</span>";
+    return false;
+   }
+   if (isNaN(y)){
+
+    document.getElementById("error3").innerHTML = "<span style='color: red;'>It Must Be A Number</span>";
+    return false;
+  }
+  var z = document.querySelector("#basamakli").value;
+  if ( z == ""){
+    document.getElementById("error4").innerHTML = "<span style='color: red;'>Basamakli Must Be Filled Out</span>";
+    return false;
+   }
+  if (isNaN(z)){
+    document.getElementById("error4").innerHTML = "<span style='color: red;'>It Must Be Number</span>";
+    return false;
+  }
+  else{
+    if( z < 100000000000 || z >999999999999){
+      document.getElementById("error4").innerHTML = "<span style='color: red;'>It Must Be 12 Digit Number</span>";
+      return false;
+      
+    }
+  }
+  var a = document.querySelector("#alfa").value;
+  if ( a == ""){
+    document.getElementById("error5").innerHTML = "<span style='color: red;'>Alfa Must Be Filled Out</span>";
+    return false;
+   }
+   if (!/^[a-zA-Z]+$/.test(a))
+{
+    document.getElementById("error5").innerHTML = "<span style='color: red;'>Please only enter letters (Allowed input: a-z, A-Z)</span>";
+  return false;
+}
+  var m = document.querySelector("#max30").value;
+    if ( m == ""){
+    document.getElementById("error6").innerHTML = "<span style='color: red;'>Max30 must be filled out</span>";
+    return false;
+   }
+   if (!/^[a-zA-Z]+$/.test(m))
+  {
+    document.getElementById("error6").innerHTML = "<span style='color: red;'>Please only enter letters (Allowed input: a-z, A-Z)</span>";
+  return false;
+  }else {
+  if (m.length > 30) {
+    document.getElementById("error6").innerHTML = "<span style='color: red;'>Max 30 must be maximum 30 characters</span>";
+      return false;
+  }
+  }
+  var u = document.querySelector("#uckelime").value;
+    if ( u == ""){
+    document.getElementById("error7").innerHTML = "<span style='color: red;'>Uckelime must be filled out</span>";
+    return false;
+   }
+
+  if (u.split(" ").length != 3)
+ {
+    document.getElementById("error7").innerHTML ="<span style=Uckelime must be three word String</span>";
+  
+  return false;
+}
+
+  var p = document.querySelector("#password").value;
+    if ( p == ""){
+    document.getElementById("error8").innerHTML = "<span style='color: red;'>Password must be filled out</span>";
+    return false;
+   }
+    if (!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,250}$/.test(p)){
+      document.getElementById("error8").innerHTML = "<span style='color: red;'>Please Read The Reqiurements. And Then Choose Another Password</span>";
+  return false;
+    }
+
+      }
+
+
+</script>
+</head>
+<body>
+
+<form name="myForm" action="/action_page.php" onsubmit="return validateForm()" method="post">
+  Aşağıdaki hiçbir input boş olmamalı: <br>
+  
+
+  <table style="width:40%">
+  <tr>
+    <td>Boş olmamalı: </td>
+    <td><input type="text" id="name"></td>
+    <td id="error1" ></td>
+  </tr>
+  <tr>
+    <td>E-mail (Kurallara uygun email): </td>
+    <td><input type="text" id="email"></td>
+    <td id="error2" ></td>
+  </tr>
+  <tr>
+    <td>Sadece sayısal: </td>
+    <td><input type="text" id="sayisal"></td>
+    <td id="error3" ></td>
+  </tr>
+  <tr>
+    <td>Sadece sayısal olan ve 12 basamak uzunluğundaki sayi: </td>
+    <td><input type="text" id="basamakli"></td>
+    <td id="error4" ></td>
+  </tr>
+  <tr>
+    <td>Sadece harf (a..z veya A..Z): </td>
+    <td><input type="text" id="alfa"></td>
+    <td id="error5" ></td>
+  </tr>
+  <tr>
+    <td>Sadece harf ve en fazla 30 uzunlukta olan string: </td>
+    <td><input type="text" id="max30"></td>
+    <td id="error6" ></td>
+  </tr>
+  <tr>
+    <td>3 kelimeden oluşan string: </td>
+    <td><input type="text" id="uckelime"></td>
+    <td id="error7" ></td>
+  </tr>
+  <tr>
+    <td>En az 1 büyük harf, en az 1 küçük harf, en az bir rakam ve en az 1 noktalama işareti içeren ve en az 8 uzunluğunda olan metin: </td>
+    <td><input type="text" id="password"></td>
+    <td id="error8" ></td>
+  </tr>
+  
+
+</table>
+
+<br>
+  <input type="submit" value="Submit">
+</form>
+
+</body>
+</html>
